@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "outDir": "./dest",
+    "rootDir": "./",
+    "esModuleInterop": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["node_modules/*"]
+    }
+  },
+  "include": ["./index.ts", "./routes/**/*.ts", "./utils/**/*.ts"],
+  "exclude": ["node_modules", "dest"]
+}
+
