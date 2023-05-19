@@ -24,6 +24,15 @@ type EditPostType = {
   media?: string;
 };
 
+function isValidURL(url: string) {
+  try {
+    new URL(url);
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
 //get posts
 router.get("/", async (req: Request<{}, {}, PaginetedBody>, res: Response) => {
   const { page } = req.query;
@@ -50,6 +59,9 @@ router.post(
   async (req: Request<{}, {}, CreatePostType>, res: Response) => {
     if (!req.body.media && !req.body.message)
       return res.status(400).json({ message: "Empty post" });
+    if (req.body.media && !isValidURL(req.body.media)) {
+      return res.status(400).json({ message: "url is invalid" });
+    }
 
     let userId = res.get("user_id")!;
     try {
@@ -73,6 +85,9 @@ router.put(
   async (req: Request<{}, {}, EditPostType>, res: Response) => {
     if (!req.body.media && !req.body.message)
       return res.status(400).json({ message: "Empty post" });
+    if (req.body.media && !isValidURL(req.body.media)) {
+      return res.status(400).json({ message: "url is invalid" });
+    }
 
     let userId = res.get("user_id")!;
     try {
