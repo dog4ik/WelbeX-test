@@ -104,7 +104,7 @@ Create a new post.
 ### Response
 
 - `201 Created` on success.
-- `400 Bad Request` if both message and media parameters are missing.
+- `400 Bad Request` if both message and media parameters are missing or media URL is invalid.
 - `500 Internal Server Error` if an error occurs on the server.
 
 ## PUT /posts/edit
@@ -124,7 +124,7 @@ Edit an existing post.
 ### Response
 
 - `204 No Content` on success.
-- `400 Bad Request` if both message and media parameters are missing, or if the post is not found.
+- `400 Bad Request` if both message and media parameters are missing, media URL is invalid, or if the post is not found.
 - `500 Internal Server Error` if an error occurs on the server.
 
 ## DELETE /posts/delete
